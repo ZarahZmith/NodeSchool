@@ -10,7 +10,18 @@ process.argv.slice(2).forEach(function(element) {
 // console.log(result);
 
 //MY FIRST I/O!
+// let fs = require('fs');
+// let info = fs.readFileSync(process.argv[2], 'utf8');
+// let lines = info.split('\n').length-1;
+// console.log(lines);
+
+//MY FIRST ASYNC I/O!
 let fs = require('fs');
-let info = fs.readFileSync(process.argv[2], 'utf8')
-let lines = info.split('\n').length-1;
-console.log(lines);
+  let path = require('path');
+  fs.readdir(process.argv[2], function (err, list) {
+    list.forEach(function (file) {
+      if (path.extname(file) === '.' + process.argv[3]) {
+        console.log(file);
+      }
+    });
+  });
