@@ -17,8 +17,15 @@
 
 //MY FIRST ASYNC I/O!
 let fs = require('fs');
+let path = require('path');
 
 fs.readFile(process.argv[2], 'utf8', (err, data) => {
   if (err) throw err;
-  console.log(data.split('\n').length-1);
+  // console.log(data.split('\n').length-1);
+  //FILTERED LS
+  data.forEach(file => {
+    if (path.extName(file) === '.' + process.argv[3]) {
+      console.log(file);
+    }
+  });
 });
